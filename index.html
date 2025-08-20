@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>File → Image Converter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden>
+        <path d="M3 12h18" stroke="#0ea5a4" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <div>
+        <h1>File → Image Converter</h1>
+        <div style="color:var(--muted);font-size:0.9rem">Upload a file and convert it into images instantly.</div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2 style="margin-top:0">Upload & Options</h2>
+      <div id="drop" class="drop" tabindex="0">
+        Drop files here or <button id="selectBtn" class="btn ghost">Select file</button>
+      </div>
+      <input id="fileInput" type="file" />
+
+      <div class="row">
+        <div class="col">
+          <label for="format">Output format</label>
+          <div class="options">
+            <button data-value="png" class="chip">PNG</button>
+            <button data-value="jpeg" class="chip">JPEG</button>
+            <button data-value="webp" class="chip">WebP</button>
+          </div>
+        </div>
+        <div style="width:170px">
+          <label for="dpi">DPI</label>
+          <input id="dpi" type="number" value="150" min="72" max="600" />
+        </div>
+      </div>
+
+      <div style="display:flex;gap:10px;margin-top:14px;align-items:center;flex-wrap:wrap">
+        <button id="convertBtn" class="btn">Start Conversion</button>
+        <div id="status" style="color:var(--muted)"></div>
+      </div>
+
+      <div id="progressWrap" style="display:none">
+        <div class="progress"><i id="progressBar"></i></div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px">
+          <span id="progressText" class="meta">Queued</span>
+          <span id="eta" class="meta"></span>
+        </div>
+      </div>
+
+      <div id="gallery" class="gallery"></div>
+    </section>
+
+    <footer>
+      <small>Prototype — connect real backend (POST /v1/jobs, GET /v1/jobs/:id) for actual conversion.</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
